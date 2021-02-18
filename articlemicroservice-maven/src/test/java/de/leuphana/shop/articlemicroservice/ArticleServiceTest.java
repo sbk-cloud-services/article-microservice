@@ -20,6 +20,5 @@ public class ArticleServiceTest {
 public void canArticleBeCreated() {
     Assertions.assertNotNull(articleService.createArticle("Shirt", 12.99));
 }
-
-    
+   
 }
