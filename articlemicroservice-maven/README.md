@@ -1,1 +1,0 @@
-# articlemicroservice-maven
