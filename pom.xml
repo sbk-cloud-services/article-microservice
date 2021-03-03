@@ -30,8 +30,22 @@
         <maven.install>3.0.0-M1</maven.install>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>github</id>
+            <name>GitHub sbk-cloud-services Apache Maven Packages</name>
+            <url>https://github.com/sbk-cloud-services/cart-microservice</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <!-- Dependencies -->
+
+        <dependency>
+            <groupId>de.leuphana.shop</groupId>
+            <artifactId>cartmicroservice</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
 
         <!-- JPA / ORM -->
         <dependency>
