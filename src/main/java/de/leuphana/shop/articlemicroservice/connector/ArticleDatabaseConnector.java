@@ -2,7 +2,6 @@ package de.leuphana.shop.articlemicroservice.connector;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -29,14 +28,14 @@ public class ArticleDatabaseConnector {
     }
 
     @Transactional
-    public Article getArticle(Integer id) {
+    public Article getArticle(Integer id){
         ArticleEntity articleEntity = entityManager.getReference(ArticleEntity.class, id);
         return ArticleMapper.mapArticleEntityToArticle(articleEntity);
     }
 
     @Transactional
     public List<Article> searchArticles(String searchQuery) {
-        List<ArticleEntity> articleEntities = entityManager.createQuery("FROM article WHERE name LIKE \"%:searchQuery%\"").setParameter("searchQuery", searchQuery).getResultList();
+        List<ArticleEntity> articleEntities = entityManager.createQuery("FROM Article WHERE name LIKE :searchQuery").setParameter("searchQuery", searchQuery).getResultList();
         List<Article> articles = new LinkedList<>(); 
         for (ArticleEntity articleEntity : articleEntities) {
             articles.add(ArticleMapper.mapArticleEntityToArticle(articleEntity));
@@ -52,6 +51,11 @@ public class ArticleDatabaseConnector {
 
     @Transactional
     public void editArticle(Integer id, String name, Double price) {
-        entityManager.createQuery("UPDATE article SET name = \"name\", price = \"price\" WHERE id LIKE \"id\"");
+        ArticleEntity articleEntity = entityManager.find(ArticleEntity.class, id);
+        Article article = ArticleMapper.mapArticleEntityToArticle(articleEntity);
+        article.setName(name);
+        article.setPrice(price);
+        articleEntity = ArticleMapper.mapArticleToArticleEntity(article);
+        entityManager.merge(articleEntity);
     }
 }
