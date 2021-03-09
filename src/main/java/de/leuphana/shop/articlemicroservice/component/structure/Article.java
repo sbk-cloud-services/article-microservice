@@ -1,7 +1,5 @@
 package de.leuphana.shop.articlemicroservice.component.structure;
 
-import java.util.List;
-
 public class Article {
     private Integer id;
     private String name;
