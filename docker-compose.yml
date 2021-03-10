@@ -21,5 +21,9 @@ services:
     ports:
       - "127.0.0.1:3306:3306"
 
-volumes:
-  database:
+  adminer:
+    image: adminer:latest
+    links:
+      - database
+    ports:
+      - "127.0.0.1:8000:8080"

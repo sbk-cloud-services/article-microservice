@@ -1,4 +1,4 @@
-package de.leuphana.shop.articlemicroservice;
+package de.leuphana.shop.articlemicroservice.component;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;

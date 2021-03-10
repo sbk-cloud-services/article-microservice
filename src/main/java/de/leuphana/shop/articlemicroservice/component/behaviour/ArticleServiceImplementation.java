@@ -29,9 +29,14 @@ public class ArticleServiceImplementation implements ArticleService {
     }
 
     public Article getArticle(Integer id) {
-        return articleDatabaseConnector.getArticle(id);
+        Article article = articleDatabaseConnector.getArticle(id);
+        if(article == null) {
+            return null; 
+        } else {
+            return article;
+        }
     }
-
+    
     @Override
     public List<Article> searchArticles(String searchQuery) {
         return articleDatabaseConnector.searchArticles(searchQuery);
