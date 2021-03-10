@@ -6,18 +6,20 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import de.leuphana.shop.articlemicroservice.component.behaviour.ArticleServiceImplementation;
-
 @SpringBootApplication
 public class ArticleServiceApplication implements CommandLineRunner {
     public static void main(String[] args) {
         SpringApplication.run(ArticleServiceApplication.class, args);
     }
 
+    private static ApplicationContext applicationContext;
+
+    public static ApplicationContext getApplicationContext() {
+        return applicationContext;
+    }
+
     @Override
     public void run(String... args) throws Exception {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationcontext-jpa-connector.xml");
-        ArticleDatabaseConnector articleDatabaseConnector = (ArticleDatabaseConnector) applicationContext.getBean("articleDatabaseConnector");
-        ArticleServiceImplementation.getInstance().setArticleDatabaseConnector(articleDatabaseConnector);
+      applicationContext = new ClassPathXmlApplicationContext("applicationcontext.xml");       
     }
 }
