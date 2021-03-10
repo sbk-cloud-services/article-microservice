@@ -2,7 +2,6 @@ package de.leuphana.shop.articlemicroservice.connector;
 
 import java.util.Iterator;
 import java.util.List;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;

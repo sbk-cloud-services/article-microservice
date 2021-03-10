@@ -28,15 +28,20 @@ public class ArticleDatabaseConnector {
     }
 
     @Transactional
-    public Article getArticle(Integer id){
-        ArticleEntity articleEntity = entityManager.getReference(ArticleEntity.class, id);
-        return ArticleMapper.mapArticleEntityToArticle(articleEntity);
+    public Article getArticle(Integer id) {
+        ArticleEntity articleEntity = entityManager.find(ArticleEntity.class, id);
+        if (articleEntity != null) {
+            return ArticleMapper.mapArticleEntityToArticle(articleEntity);
+        } else {
+            return null;
+        }
     }
 
     @Transactional
     public List<Article> searchArticles(String searchQuery) {
-        List<ArticleEntity> articleEntities = entityManager.createQuery("FROM Article WHERE name LIKE :searchQuery").setParameter("searchQuery", searchQuery).getResultList();
-        List<Article> articles = new LinkedList<>(); 
+        List<ArticleEntity> articleEntities = entityManager.createQuery("FROM Article WHERE name LIKE :searchQuery")
+                .setParameter("searchQuery", "%" + searchQuery + "%").getResultList();
+        List<Article> articles = new LinkedList<>();
         for (ArticleEntity articleEntity : articleEntities) {
             articles.add(ArticleMapper.mapArticleEntityToArticle(articleEntity));
         }

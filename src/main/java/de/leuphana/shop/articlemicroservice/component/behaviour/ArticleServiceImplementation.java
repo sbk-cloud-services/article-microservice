@@ -7,16 +7,9 @@ import de.leuphana.shop.articlemicroservice.connector.ArticleDatabaseConnector;
 
 public class ArticleServiceImplementation implements ArticleService {
 
-    private static ArticleServiceImplementation articleServiceImplementation;
     private ArticleDatabaseConnector articleDatabaseConnector;
 
-    public static ArticleServiceImplementation getInstance() {
-        if (articleServiceImplementation == null)
-            articleServiceImplementation = new ArticleServiceImplementation();
-        return articleServiceImplementation;
-    }
-
-    public void setArticleDatabaseConnector(ArticleDatabaseConnector articleDatabaseConnector) {
+    public ArticleServiceImplementation(ArticleDatabaseConnector articleDatabaseConnector) {
         this.articleDatabaseConnector = articleDatabaseConnector;
     }
 
@@ -25,16 +18,12 @@ public class ArticleServiceImplementation implements ArticleService {
         Article article = new Article();
         article.setName(name);
         article.setPrice(price);
+        article.setId(articleDatabaseConnector.createArticle(article));
         return article;
     }
 
     public Article getArticle(Integer id) {
-        Article article = articleDatabaseConnector.getArticle(id);
-        if(article == null) {
-            return null; 
-        } else {
-            return article;
-        }
+        return articleDatabaseConnector.getArticle(id);
     }
     
     @Override
@@ -51,5 +40,4 @@ public class ArticleServiceImplementation implements ArticleService {
     public void editArticle(Integer id, String name, Double price) {
         articleDatabaseConnector.editArticle(id, name, price);
     }
-
 }
