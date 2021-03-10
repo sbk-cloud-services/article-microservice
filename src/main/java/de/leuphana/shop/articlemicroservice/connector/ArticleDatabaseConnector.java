@@ -2,7 +2,6 @@ package de.leuphana.shop.articlemicroservice.connector;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
