@@ -9,4 +9,4 @@ RUN mvn package
 
 EXPOSE 8080
 
-ENTRYPOINT ["java", "-jar", "target/cartservice-1.0-SNAPSHOT.jar"]
+ENTRYPOINT ["java", "-jar", "target/articlemicroservice-1.0.jar"]

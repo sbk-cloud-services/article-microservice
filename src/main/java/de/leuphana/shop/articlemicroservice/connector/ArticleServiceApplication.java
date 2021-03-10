@@ -20,7 +20,6 @@ public class ArticleServiceApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        applicationContext = new ClassPathXmlApplicationContext("applicationcontext.xml");
-        
+      applicationContext = new ClassPathXmlApplicationContext("applicationcontext.xml");       
     }
 }

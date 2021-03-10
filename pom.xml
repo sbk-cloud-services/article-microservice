@@ -133,7 +133,7 @@
                         <configuration>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>de.leuphana.shop.articlemicroservice.App</mainClass>
+                                    <mainClass>de.leuphana.shop.articlemicroservice.connector.ArticleServiceApplication</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
@@ -143,6 +143,14 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.4.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
