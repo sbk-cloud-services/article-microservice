@@ -7,7 +7,7 @@ http://www.springframework.org/schema/tx/spring-tx-4.3.xsd" xmlns:tx="http://www
 
     <import resource="applicationcontext-jpa-connector.xml" />
 
-    <bean id="articleService" class="de.leuphana.shop.articlemicroservice.component.behaviour.ArticleServiceImplementation">
+    <bean id="articleService" scope="singleton" class="de.leuphana.shop.articlemicroservice.component.behaviour.ArticleServiceImplementation">
         <constructor-arg ref="articleDatabaseConnector" />
     </bean>
 </beans>
