@@ -22,10 +22,11 @@ public class ArticleServiceImplementation implements ArticleService {
         return article;
     }
 
+    @Override
     public Article getArticle(Integer id) {
         return articleDatabaseConnector.getArticle(id);
     }
-    
+
     @Override
     public List<Article> searchArticles(String searchQuery) {
         return articleDatabaseConnector.searchArticles(searchQuery);

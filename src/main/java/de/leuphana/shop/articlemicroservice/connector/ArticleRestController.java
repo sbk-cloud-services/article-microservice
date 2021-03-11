@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import de.leuphana.shop.articlemicroservice.component.behaviour.ArticleService;
-import de.leuphana.shop.articlemicroservice.component.behaviour.ArticleServiceImplementation;
 import de.leuphana.shop.articlemicroservice.component.structure.Article;
 
 public class ArticleRestController {

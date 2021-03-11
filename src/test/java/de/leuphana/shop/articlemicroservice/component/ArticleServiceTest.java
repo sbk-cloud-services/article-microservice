@@ -2,13 +2,12 @@ package de.leuphana.shop.articlemicroservice.component;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.core.annotation.Order;
-
 import de.leuphana.shop.articlemicroservice.component.behaviour.ArticleService;
 
 @TestMethodOrder(OrderAnnotation.class)
@@ -25,7 +24,7 @@ public class ArticleServiceTest {
     @Test
     @Order(1)
     public void canArticleBeCreated() {
-        Assertions.assertNotNull(articleService.createArticle("Shirt", 12.99));
+        Assertions.assertNotNull(articleService.createArticle("Tshirt", 12.99));
     }
 
     @Test
