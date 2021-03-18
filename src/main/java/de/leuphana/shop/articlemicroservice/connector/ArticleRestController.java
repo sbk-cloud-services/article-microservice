@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import de.leuphana.shop.articlemicroservice.component.behaviour.ArticleService;
 import de.leuphana.shop.articlemicroservice.component.structure.Article;
 
+@RestController
 public class ArticleRestController {
 
     @GetMapping("/articles")
@@ -40,7 +42,7 @@ public class ArticleRestController {
 
     @DeleteMapping("/articles/{id}")
     @ResponseBody
-    public Article deletArticle(@PathVariable("id") Integer id) {
+    public Article deleteArticle(@PathVariable("id") Integer id) {
         ArticleService articleService = (ArticleService) ArticleServiceApplication.getApplicationContext().getBean("articleService");
         return articleService.getArticle(id);
     }

@@ -10,9 +10,9 @@ services:
       - "127.0.0.1:8080:8080"
 
   database:
-    image: mariadb:latest
     volumes:
-      - database:/var/mysql/
+      - database:/var/lib/mysql/
+    image: mariadb:latest
     environment:
       MYSQL_ROOT_PASSWORD: 3ayYMPwCd2maT3yuPGS6dnY7XC4CRnvb
       MYSQL_DATABASE: article
