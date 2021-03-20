@@ -1,7 +1,7 @@
 version: "3.0"
 services:
   article:
-    image: ghcr.io/sbk-cloud-services/article-microservice:latest
+ #   image: ghcr.io/sbk-cloud-services/article-microservice:latest
     build:
       context: .
     links:
@@ -10,9 +10,9 @@ services:
       - "127.0.0.1:8080:8080"
 
   database:
-    volumes:
-      - database:/var/lib/mysql/
     image: mariadb:latest
+    #volumes:
+    #  - database:/var/mysql/
     environment:
       MYSQL_ROOT_PASSWORD: 3ayYMPwCd2maT3yuPGS6dnY7XC4CRnvb
       MYSQL_DATABASE: article

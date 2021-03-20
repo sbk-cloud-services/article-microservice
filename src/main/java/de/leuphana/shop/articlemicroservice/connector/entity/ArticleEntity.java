@@ -1,6 +1,8 @@
 package de.leuphana.shop.articlemicroservice.connector.entity;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity(name = "Article")
 public class ArticleEntity {
