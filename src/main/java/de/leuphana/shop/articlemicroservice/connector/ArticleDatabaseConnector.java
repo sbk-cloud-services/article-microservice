@@ -56,12 +56,13 @@ public class ArticleDatabaseConnector {
     }
 
     @Transactional
-    public void editArticle(Integer id, String name, Double price) {
+    public Article editArticle(Integer id, String name, Double price) {
         ArticleEntity articleEntity = entityManager.find(ArticleEntity.class, id);
         Article article = ArticleMapper.mapArticleEntityToArticle(articleEntity);
         article.setName(name);
         article.setPrice(price);
         articleEntity = ArticleMapper.mapArticleToArticleEntity(article);
         entityManager.merge(articleEntity);
+        return article;
     }
 }

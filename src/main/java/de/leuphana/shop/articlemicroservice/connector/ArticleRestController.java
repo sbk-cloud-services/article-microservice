@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,29 +21,39 @@ public class ArticleRestController {
     @GetMapping("/articles")
     @ResponseBody
     public List<Article> searchArticle(@RequestParam Optional<String> searchQuery) {
-        ArticleService articleService = (ArticleService) ArticleServiceApplication.getApplicationContext().getBean("articleService");
+        ArticleService articleService = (ArticleService) ArticleServiceApplication.getApplicationContext()
+                .getBean("articleService");
         return articleService.searchArticles(!searchQuery.isPresent() ? "" : searchQuery.get());
     }
 
     @PostMapping("/articles")
     @ResponseBody
-    public Article createArticle(@RequestBody Article article) {;
-        ArticleService articleService = (ArticleService) ArticleServiceApplication.getApplicationContext().getBean("articleService");
+    public Article createArticle(@RequestBody Article article) {
+        ArticleService articleService = (ArticleService) ArticleServiceApplication.getApplicationContext()
+                .getBean("articleService");
         return articleService.createArticle(article.getName(), article.getPrice());
     }
 
     @GetMapping("/articles/{id}")
-    public Article getArticle(@PathVariable("id") Integer id) {
-        ArticleService articleService = (ArticleService) ArticleServiceApplication.getApplicationContext().getBean("articleService");
-        
+    @ResponseBody
+    public Article getArticle(@PathVariable Integer id) {
+        ArticleService articleService = (ArticleService) ArticleServiceApplication.getApplicationContext()
+                .getBean("articleService");
         return articleService.getArticle(id);
     }
 
-
     @DeleteMapping("/articles/{id}")
+    public void deleteArticle(@PathVariable("id") Integer id) {
+        ArticleService articleService = (ArticleService) ArticleServiceApplication.getApplicationContext()
+                .getBean("articleService");
+        articleService.deleteArticle(id);
+    }
+
+    @PostMapping("/articles/{id}")
     @ResponseBody
-    public Article deleteArticle(@PathVariable("id") Integer id) {
-        ArticleService articleService = (ArticleService) ArticleServiceApplication.getApplicationContext().getBean("articleService");
-        return articleService.getArticle(id);
+    public Article editArticle(@PathVariable Integer id, @RequestBody Article article) {
+        ArticleService articleService = (ArticleService) ArticleServiceApplication.getApplicationContext()
+                .getBean("articleService");
+        return articleService.editArticle(id, article.getName(), article.getPrice());
     }
 }

@@ -21,7 +21,7 @@ public class Article {
         this.name = name;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return this.price;
     }
 

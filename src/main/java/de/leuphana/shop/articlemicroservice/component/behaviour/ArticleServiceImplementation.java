@@ -2,13 +2,18 @@ package de.leuphana.shop.articlemicroservice.component.behaviour;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import de.leuphana.shop.articlemicroservice.component.structure.Article;
 import de.leuphana.shop.articlemicroservice.connector.ArticleDatabaseConnector;
 
+@Component
 public class ArticleServiceImplementation implements ArticleService {
 
     private ArticleDatabaseConnector articleDatabaseConnector;
 
+    @Autowired
     public ArticleServiceImplementation(ArticleDatabaseConnector articleDatabaseConnector) {
         this.articleDatabaseConnector = articleDatabaseConnector;
     }
@@ -38,7 +43,7 @@ public class ArticleServiceImplementation implements ArticleService {
     }
 
     @Override
-    public void editArticle(Integer id, String name, Double price) {
-        articleDatabaseConnector.editArticle(id, name, price);
+    public Article editArticle(Integer id, String name, Double price) {
+        return articleDatabaseConnector.editArticle(id, name, price);
     }
 }
