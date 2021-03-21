@@ -48,13 +48,7 @@ public class ArticleDatabaseConnector {
         }
         return articles;
     }
-
-    @Transactional
-    public void deleteArticle(Integer id) {
-        ArticleEntity articleEntity = entityManager.find(ArticleEntity.class, id);
-        entityManager.remove(articleEntity);
-    }
-
+    
     @Transactional
     public Article editArticle(Integer id, String name, Double price) {
         ArticleEntity articleEntity = entityManager.find(ArticleEntity.class, id);

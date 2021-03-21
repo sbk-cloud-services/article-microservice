@@ -11,7 +11,5 @@ public interface ArticleService {
 
     public List<Article> searchArticles(String query);
 
-    public void deleteArticle(Integer id);
-
     public Article editArticle(Integer id, String name, Double price);
 }

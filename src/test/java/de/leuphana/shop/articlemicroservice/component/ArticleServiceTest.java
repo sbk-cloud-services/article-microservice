@@ -45,11 +45,4 @@ public class ArticleServiceTest {
         articleService.editArticle(1, "Hoodie", 24.99);
         Assertions.assertEquals("Hoodie", articleService.getArticle(1).getName());
     }
-
-    @Test
-    @Order(5)
-    public void canArticleBeDeleted() {
-        articleService.deleteArticle(1);
-        Assertions.assertNull(articleService.getArticle(1));
-    }
 }

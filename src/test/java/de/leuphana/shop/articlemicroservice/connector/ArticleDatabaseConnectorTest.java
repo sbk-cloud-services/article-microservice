@@ -12,6 +12,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import de.leuphana.shop.articlemicroservice.component.structure.Article;
+
 @TestMethodOrder(OrderAnnotation.class)
 public class ArticleDatabaseConnectorTest {
     private static ApplicationContext applicationContext;
@@ -21,7 +22,7 @@ public class ArticleDatabaseConnectorTest {
     @BeforeAll
     public static void setupBeforeClass() {
         applicationContext = new ClassPathXmlApplicationContext("applicationcontext-jpa-connector.xml");
-        
+
         article = new Article();
         article.setName("Tshirt");
         article.setPrice(12.99);
@@ -50,19 +51,12 @@ public class ArticleDatabaseConnectorTest {
             System.out.println(iterator.next().getName() + " ");
         }
         Assertions.assertNotNull(articleDatabaseConnector.searchArticles("TShirt"));
-    } 
+    }
 
     @Test
     @Order(4)
     public void canArticlesBeEdited() {
         articleDatabaseConnector.editArticle(1, "Hoodie", 24.99);
         Assertions.assertEquals("Hoodie", articleDatabaseConnector.getArticle(1).getName());
-    }
-
-    @Test
-    @Order(5)
-    public void canArticlesBeDeleted() {
-        articleDatabaseConnector.deleteArticle(1);
-        Assertions.assertNull(articleDatabaseConnector.getArticle(1));
     }
 }

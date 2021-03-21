@@ -38,11 +38,6 @@ public class ArticleServiceImplementation implements ArticleService {
     }
 
     @Override
-    public void deleteArticle(Integer id) {
-        articleDatabaseConnector.deleteArticle(id);
-    }
-
-    @Override
     public Article editArticle(Integer id, String name, Double price) {
         return articleDatabaseConnector.editArticle(id, name, price);
     }
