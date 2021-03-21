@@ -25,28 +25,28 @@ spec:
         io.kompose.service: database
     spec:
       containers:
-      - env:
-        - name: MYSQL_DATABASE
-          value: article
-        - name: MYSQL_PASSWORD
-          value: 3ayYMPwCd2maT3yuPGS6dnY7XC4CRnvb
-        - name: MYSQL_ROOT_PASSWORD
-          value: 3ayYMPwCd2maT3yuPGS6dnY7XC4CRnvb
-        - name: MYSQL_USER
-          value: article
-        image: mariadb:latest
-        imagePullPolicy: ""
-        name: database
-        ports:
-        - containerPort: 3306
-        resources: {}
-        volumeMounts:
-        - mountPath: /var/mysql/
+        - env:
+            - name: MYSQL_DATABASE
+              value: article
+            - name: MYSQL_PASSWORD
+              value: 3ayYMPwCd2maT3yuPGS6dnY7XC4CRnvb
+            - name: MYSQL_ROOT_PASSWORD
+              value: 3ayYMPwCd2maT3yuPGS6dnY7XC4CRnvb
+            - name: MYSQL_USER
+              value: article
+          image: mariadb:latest
+          imagePullPolicy: ""
           name: database
+          ports:
+            - containerPort: 3306
+          resources: {}
+          volumeMounts:
+            - mountPath: /var/lib/mysql/
+              name: database
       restartPolicy: Always
       serviceAccountName: ""
       volumes:
-      - name: database
-        persistentVolumeClaim:
-          claimName: database
+        - name: database
+          persistentVolumeClaim:
+            claimName: database
 status: {}
